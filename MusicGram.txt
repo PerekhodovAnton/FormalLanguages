@@ -1,15 +1,15 @@
 S -> MusicPiece
+MusicPiece -> Phrase | Dynamic MusicPiece | Articulation MusicPiece | TempoChange MusicPiece | KeySignature MusicPiece | Instrument MusicPiece
 Phrase -> Note | Chord | Rest | Repeat
 Note -> Pitch Duration
 Pitch -> 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'A#' | 'C#' | 'D#' | 'F#' | 'G#'
 Duration -> '1' | '2' | '4' | '8' | '16' | '32' | '64'
-Chord -> '[' Note+ ']'
+Chord -> '[' Note (',' Note)* ']'
 Rest -> 'rest' Duration
 Dynamic -> 'piano' | 'forte' | 'mezzo' | 'crescendo' | 'diminuendo'
 Articulation -> 'legato' | 'staccato' | 'tenuto' | 'marcato'
 Number -> '1' | '2' | '3' | '4' | '5'
 TempoChange -> 'tempo' 'set' 'to' Number
 KeySignature -> 'key' 'of' Pitch
-Instrument -> 'instrument' 'changed' 'to' 'violin' | 'flute' | 'trumpet' | 'piano' | 'guitar'
+Instrument -> 'instrument' 'changed' 'to' ('violin' | 'flute' | 'trumpet' | 'piano' | 'guitar')
 Repeat -> 'repeat' Number 'times' MusicPiece 'end repeat'
-MusicPiece -> Phrase | Phrase MusicPiece | Dynamic MusicPiece | Articulation MusicPiece | TempoChange MusicPiece | KeySignature MusicPiece |  Instrument MusicPiece
